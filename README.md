@@ -26,4 +26,33 @@ myadd:                     // Function "myadd" entry point.
 	bx       lr           // Return by branching to the address in the link register.
 	.fnend
 ```
+#### Note:
+#### armclang requires that you explicitly specify the types of exported symbols using the .type directive. If the .type directive is not specified in the above example, the linker outputs warnings of the form:
+#### Warning: L6437W: Relocation #RELA:1 in test.o(.text) with respect to myadd...
+#### Warning: L6318W: test.o(.text) contains branch to a non-code symbol myadd.
+#### 2. In C code, declare the external function using extern:
+```
+#include <stdio.h>
+					
+extern int myadd(int a, int b);
+					
+int main()
+{
+	int a = 4;
+	int b = 5;
+	printf("Adding %d and %d results in %d\n", a, b, myadd(a, b));
+	return (0);
+}
+```
+#### In C++ code, use extern "C":
+```
+extern "C" int myadd(int a, int b);
+```
+#### 3. Ensure that your assembly code complies with the Procedure Call Standard for the ARM Architecture (AAPCS).
+#### The AAPCS describes a contract between caller functions and callee functions. For example, for integer or pointer types, it specifies that:
+#### • Registers R0-R3 pass argument values to the callee function, with subsequent arguments passed on the stack.
+#### • Register R0 passes the result value back to the caller function.
+#### • Caller functions must preserve R0-R3 and R12, because these registers are allowed to be corrupted by the callee function.
+#### • Callee functions must preserve R4-R11 and LR, because these registers are not allowed to be corrupted by the callee function.
+#### For more information, see the [Procedure Call Standard for the ARM Architecture (AAPCS)](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.subset.swdev.abi/index.html).
 
