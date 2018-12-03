@@ -55,4 +55,8 @@ extern "C" int myadd(int a, int b);
 #### • Caller functions must preserve R0-R3 and R12, because these registers are allowed to be corrupted by the callee function.
 #### • Callee functions must preserve R4-R11 and LR, because these registers are not allowed to be corrupted by the callee function.
 #### For more information, see the [Procedure Call Standard for the ARM Architecture (AAPCS)](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.subset.swdev.abi/index.html).
+#### 4. Compile both source files:
+```
+armclang --target=arm-arm-none-eabi -march=armv8-a main.c myadd.s
+```
 
