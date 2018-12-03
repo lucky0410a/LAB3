@@ -15,7 +15,7 @@
 #### For code portability, it is better to use intrinsics or inline assembly rather than writing and calling assembly functions.
 #### To call an assembly function from C or C++:
 #### 1. In the assembly source, declare the code as a global function using .globl and .type:
-'''
+```
 	.globl   myadd
      .p2align 2
 	.type    myadd,%function
@@ -25,5 +25,5 @@ myadd:                     // Function "myadd" entry point.
 	add      r0, r0, r1   // Function arguments are in R0 and R1. Add together and put the result in R0.
 	bx       lr           // Return by branching to the address in the link register.
 	.fnend
-'''
+```
 
