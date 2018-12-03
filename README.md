@@ -3,8 +3,8 @@
 ![](https://i.imgur.com/iuXhZ4J.png)
 #### • If a routine has more than 4 arguments R0-R3 are used for the first 4 arguments and the rest are placed on the stack before the call
 #### • The stack must be of the Full-Descending type
-##### * A __Descending__ stack grows downwards. It starts from a high memory address, and as items are pushed onto it, progresses to lower memory addresses. The previous examples have been of a Descending stack.
-##### * In a __Full__ stack, the stack pointer points to the topmost item in the stack, i.e. the location of the last item to be pushed onto the stack.
+##### * A ==Descending== stack grows downwards. It starts from a high memory address, and as items are pushed onto it, progresses to lower memory addresses. The previous examples have been of a Descending stack.
+##### * In a ==Full== stack, the stack pointer points to the topmost item in the stack, i.e. the location of the last item to be pushed onto the stack.
 #### • Local variables can also be stored in R0-R3, R12, and even LR, specially in “leaf” subroutines (no other subroutine call)
 
 ### 4.3 Calling assembly functions from C and C++
